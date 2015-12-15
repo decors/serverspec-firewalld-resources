@@ -12,17 +12,25 @@ Serverspec resources to testing Firewalld.
         describe firewalld do
           its(:default_zone) { should contain 'public' }
         end
-    
+
 * port
 
         describe firewalld do
           it { should have_port('161/udp') }
         end
 
+    * *format* : `port/protocol` or `port-port/protocol` (range)
+
 * service
 
         describe firewalld do
           it { should have_service('ssh') }
+        end
+
+* source
+
+        describe firewalld do
+          it { should have_source('192.160.0.100/32') }
         end
 
 * interface
@@ -39,12 +47,14 @@ Serverspec resources to testing Firewalld.
               it { should have_rich_rule('rule family="ipv4" source address="1.1.1.100/32" service name="mysql" accept') }
             end
 
+        * *format* : enclose option parameters in *double quates*
+
     * hash
 
         * source / destination and service example
 
                 describe firewalld do
-                  it do 
+                  it do
                     should have_rich_rule(
                       :family => 'ipv4',
                       :source => '1.1.1.100/32',
