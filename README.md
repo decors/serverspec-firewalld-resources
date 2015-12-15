@@ -41,37 +41,43 @@ Serverspec resources to testing Firewalld.
 
     * hash
 
-            describe firewalld do
-              it do 
-                should have_rich_rule(
-                  :family => 'ipv4',
-                  :source => '1.1.1.100/32',
-                  :service => 'mysql',
-                  :action  => 'accept'
-                )
-              end
-            end
+        * source / destination and service example
 
-            describe firewalld do
-              it do
-                should have_rich_rule(
-                  :family => 'ipv4',
-                  :port => { :port => '80', :protocol => 'tcp' },
-                  :action  => 'accept'
-                )
-              end
-            end
+                describe firewalld do
+                  it do 
+                    should have_rich_rule(
+                      :family => 'ipv4',
+                      :source => '1.1.1.100/32',
+                      :service => 'mysql',
+                      :action  => 'accept'
+                    )
+                  end
+                end
 
-            describe firewalld do
-              it do
-                should have_rich_rule(
-                  :family => 'ipv4',
-                  :service => 'ssh',
-                  :log => { :prefix => 'ssh con', :level => 'info' },
-                  :action  => 'accept'
-                )
-              end
-            end
+        * port and protocol example
+
+                describe firewalld do
+                  it do
+                    should have_rich_rule(
+                      :family => 'ipv4',
+                      :port => { :port => '80', :protocol => 'tcp' },
+                      :action  => 'accept'
+                    )
+                  end
+                end
+
+        * service and logging example
+
+                describe firewalld do
+                  it do
+                    should have_rich_rule(
+                      :family => 'ipv4',
+                      :service => 'ssh',
+                      :log => { :prefix => 'ssh con', :level => 'info' },
+                      :action  => 'accept'
+                    )
+                  end
+                end
 
 * (option) zone
 
