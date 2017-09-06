@@ -44,12 +44,17 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
         _rule += " source address=#{escape(rule[:source])}" if rule[:source]
         _rule += " destination address=#{escape(rule[:destination])}" if rule[:destination]
         _rule += " service name=#{escape(rule[:service])}" if rule[:service]
-        _rule += " port" if rule[:port]
-        _rule += " port=#{escape(rule[:port][:port])}" if rule[:port][:port]
-        _rule += " protocol=#{escape(rule[:port][:protocol])}" if rule[:port][:protocol]
-        _rule += " log" if rule[:log]
-        _rule += " prefix=#{escape(rule[:log][:prefix])}" if rule[:log][:prefix]
-        _rule += " level=#{escape(rule[:log][:level])}" if rule[:log][:level]
+        _rule += " protocol value=#{escape(rule[:protocol])}" if rule[:protocol]
+        if rule[:port]
+          _rule += " port"
+          _rule += " port=#{escape(rule[:port][:port])}" if rule[:port][:port]
+          _rule += " protocol=#{escape(rule[:port][:protocol])}" if rule[:port][:protocol]
+        end
+        if rule[:log]
+          _rule += " log"
+          _rule += " prefix=#{escape(rule[:log][:prefix])}" if rule[:log][:prefix]
+          _rule += " level=#{escape(rule[:log][:level])}" if rule[:log][:level]
+        end
         _rule += " #{escape(rule[:action])}" if rule[:action]
         rule = _rule
         cmd += " --permanent" if permanent

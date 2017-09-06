@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'serverspec-firewalld-resources'
-  spec.version     = '0.0.1'
+  spec.version     = '0.0.2'
   spec.summary     = 'serverspec firewalld resource types'
   spec.description = spec.summary
   spec.authors     = ['Decors']
