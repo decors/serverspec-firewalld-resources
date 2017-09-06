@@ -3,7 +3,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
     def get_default_zone
       "firewall-cmd --get-default-zone"
     end
-    
+
     def check_has_service(service, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent
@@ -11,7 +11,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       cmd += " --query-service=#{escape(service)}"
       cmd
     end
-    
+
     def check_has_port(port, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent
@@ -19,7 +19,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       cmd += " --query-port=#{escape(port)}"
       cmd
     end
-    
+
     def check_has_interface(interface, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent
@@ -27,7 +27,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       cmd += " --query-interface=#{escape(interface)}"
       cmd
     end
-    
+
     def check_has_source(source, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent
@@ -35,7 +35,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       cmd += " --query-source=#{escape(source)}"
       cmd
     end
-    
+
     def check_has_rich_rule(rule, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       if rule.kind_of?(Hash)
@@ -60,7 +60,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
         cmd += " --permanent" if permanent
         cmd += " --zone=#{escape(zone)}" if zone
         cmd += " --query-rich-rule='#{rule}'"
-      else        
+      else
         cmd += " --permanent" if permanent
         cmd += " --zone=#{escape(zone)}" if zone
         cmd += " --list-rich-rules"
@@ -68,7 +68,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       end
       cmd
     end
-    
+
     def check_has_icmp_block(icmptype, zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent
@@ -76,7 +76,7 @@ class Specinfra::Command::Base::Firewalld < Specinfra::Command::Base
       cmd += " --query-icmp-block='#{icmptype}'"
       cmd
     end
-    
+
     def check_enabled_masquerade(zone = nil, permanent = false)
       cmd =  "firewall-cmd"
       cmd += " --permanent" if permanent

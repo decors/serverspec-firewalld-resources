@@ -6,15 +6,15 @@ RSpec::Matchers.define :have_port do |port|
       subject.has_port?(port)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have port \"#{port}\""
     desc += " with zone \"#{@zone}\"" if @zone
@@ -31,15 +31,15 @@ RSpec::Matchers.define :have_service do |service|
       subject.has_service?(service)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have service \"#{service}\""
     desc += " with zone \"#{@zone}\"" if @zone
@@ -56,15 +56,15 @@ RSpec::Matchers.define :have_interface do |interface|
       subject.has_interface?(interface)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have interface \"#{interface}\""
     desc += " with zone \"#{@zone}\"" if @zone
@@ -81,15 +81,15 @@ RSpec::Matchers.define :have_source do |source|
       subject.has_source?(source)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have source \"#{source}\""
     desc += " with zone \"#{@zone}\"" if @zone
@@ -106,15 +106,15 @@ RSpec::Matchers.define :have_rich_rule do |rule|
       subject.has_rich_rule?(rule)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have rich rule \"#{rule}\""
     desc += " with zone \"#{@zone}\"" if @zone
@@ -131,15 +131,15 @@ RSpec::Matchers.define :have_icmp_block do |icmptype|
       subject.has_icmp_block?(icmptype)
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "have icmp block"
     desc += " with zone \"#{@zone}\"" if @zone
@@ -156,15 +156,15 @@ RSpec::Matchers.define :be_enabled_masquerade do
       subject.enabled_masquerade?
     end
   end
-  
+
   chain :with_zone do |zone|
     @zone = zone
   end
-  
+
   chain :with_permanent do
     @permanent = true
   end
-  
+
   description do
     desc =  "enabled masquerade"
     desc += " with zone \"#{@zone}\"" if @zone
